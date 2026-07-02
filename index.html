@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seid & Nadiya · A Love Story</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700;1,900&family=Inter:opsz@14..32&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #08040f;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            padding: 1.5rem;
+            color: #f0e6f5;
+            overflow-x: hidden;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(215, 180, 235, 0.3), transparent 70%);
+            border-radius: 50%;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        .story-container {
+            max-width: 820px;
+            width: 100%;
+            background: radial-gradient(circle at 30% 20%, #1f1433, #0b0818 85%);
+            border-radius: 4rem 4rem 3rem 3rem;
+            padding: 3.2rem 2.8rem 3rem;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(215, 180, 235, 0.08);
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(200, 160, 220, 0.04);
+            animation: fadeIn 1.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.95) translateY(30px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .story-container::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 4.2rem 4.2rem 3.2rem 3.2rem;
+            padding: 3px;
+            background: conic-gradient(from 160deg, #d4a0d4, #f0b8d4, #a870c0, #d4a0d4, #f0b8d4);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0.4;
+            animation: borderGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes borderGlow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        .star-divider {
+            text-align: center;
+            font-size: 1.6rem;
+            letter-spacing: 14px;
+            color: #c9a3d6;
+            opacity: 0.4;
+            margin-bottom: 0.5rem;
+            animation: shimmer 3s infinite alternate;
+        }
+
+        @keyframes shimmer {
+            0% { opacity: 0.3; letter-spacing: 12px; }
+            100% { opacity: 0.7; letter-spacing: 18px; }
+        }
+
+        .title-section {
+            text-align: center;
+            margin-bottom: 2.2rem;
+        }
+
+        .title-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 3.8rem;
+            background: linear-gradient(to right, #fce4f0, #f0b8d4, #e090c0, #f0b8d4, #fce4f0);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.1;
+            text-shadow: 0 0 60px rgba(200, 120, 200, 0.1);
+            letter-spacing: 3px;
+            animation: gradientMove 5s ease-in-out infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .title-section .sub {
+            font-size: 0.85rem;
+            letter-spacing: 8px;
+            color: #a687b5;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(180, 140, 200, 0.08);
+            border-bottom: 1px solid rgba(180, 140, 200, 0.08);
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            margin-top: 0.5rem;
+            backdrop-filter: blur(2px);
+            background: rgba(180, 140, 200, 0.02);
+            border-radius: 40px;
+            font-weight: 300;
+            animation: fadeIn 2.2s ease-out;
+        }
+
+        .names-verse {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin: 3rem 0 2.5rem;
+        }
+
+        .name-stanza {
+            text-align: center;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .name-stanza:nth-child(1) { animation-delay: 0.2s; }
+        .name-stanza:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .name-stanza .first-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 3.6rem;
+            background: linear-gradient(145deg, #ffecf5, #fbc4dd, #ffecf5);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 40px rgba(255, 160, 200, 0.15);
+            letter-spacing: 4px;
+            animation: shimmerName 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes shimmerName {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .name-stanza .last-name {
+            font-size: 0.85rem;
+            letter-spacing: 6px;
+            color: #b396c5;
+            background: rgba(200, 160, 220, 0.04);
+            padding: 0.3rem 1.5rem;
+            border-radius: 40px;
+            border: 1px solid rgba(200, 160, 220, 0.06);
+            display: inline-block;
+            margin-top: 0.2rem;
+            font-weight: 300;
+        }
+
+        .heart-glow {
+            font-size: 3.2rem;
+            color: #f5a0c8;
+            text-shadow: 0 0 50px #f580b0, 0 0 100px #f56090, 0 0 150px #f54080;
+            animation: heartbeat 1.4s infinite alternate ease-in-out;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(0.8); opacity: 0.6; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+
+        .declaration-box {
+            background: rgba(40, 20, 55, 0.25);
+            padding: 2.8rem 2.5rem;
+            border-radius: 60px 20px 60px 20px;
+            border-left: 3px solid rgba(200, 140, 220, 0.15);
+            border-right: 3px solid rgba(200, 140, 220, 0.08);
+            backdrop-filter: blur(8px);
+            margin: 1.8rem 0 2.8rem;
+            box-shadow: inset 0 0 60px rgba(180, 100, 200, 0.02), 0 10px 40px rgba(0,0,0,0.2);
+            animation: fadeIn 2.5s ease-out;
+            text-align: center;
+        }
+
+        .declaration-box .declaration-text {
+            font-size: 1.2rem;
+            line-height: 2.4;
+            color: #e6d4ee;
+            font-weight: 300;
+        }
+
+        .declaration-box .declaration-text .highlight {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-style: italic;
+            color: #ffd6ea;
+            font-size: 1.5rem;
+            text-shadow: 0 0 30px #f58ab0, 0 0 60px #f56090;
+            animation: glowPulse 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            0% { text-shadow: 0 0 20px #f58ab0, 0 0 40px #f56090; }
+            100% { text-shadow: 0 0 40px #f58ab0, 0 0 80px #f56090, 0 0 120px #f54080; }
+        }
+
+        .declaration-box .divider-line {
+            display: block;
+            text-align: center;
+            opacity: 0.3;
+            font-size: 1.2rem;
+            margin: 0.3rem 0;
+            letter-spacing: 8px;
+        }
+
+        .declaration-box .big-line {
+            font-size: 1.8rem;
+            color: #f0c8e0;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-shadow: 0 0 30px rgba(200, 120, 200, 0.2);
+        }
+
+        .date-display {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #b89ec9;
+            letter-spacing: 6px;
+            margin: 1.2rem 0 0.5rem;
+            opacity: 0.6;
+            font-weight: 300;
+            animation: fadeIn 3s ease-out;
+        }
+
+        .date-display i {
+            color: #e8b6d4;
+            margin: 0 10px;
+            animation: shimmer 3s infinite alternate;
+        }
+
+        .romantic-footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: #a687b5;
+            border-top: 1px dashed rgba(180, 140, 200, 0.06);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            animation: fadeIn 3.5s ease-out;
+        }
+
+        .romantic-footer .seal {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #e8c8e8;
+            letter-spacing: 3px;
+        }
+
+        .romantic-footer .seal i {
+            color: #f0a0c0;
+            margin: 0 8px;
+            animation: heartbeat 2s infinite alternate;
+        }
+
+        .pill-button {
+            background: rgba(200, 160, 220, 0.03);
+            border: 1px solid rgba(200, 160, 220, 0.08);
+            color: #d4bcdb;
+            padding: 0.5rem 1.8rem;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            backdrop-filter: blur(2px);
+            cursor: default;
+            transition: all 0.3s ease;
+        }
+
+        .pill-button:hover {
+            background: rgba(200, 160, 220, 0.08);
+            border-color: rgba(200, 160, 220, 0.2);
+            box-shadow: 0 0 30px rgba(200, 120, 200, 0.05);
+        }
+
+        .floating-heart {
+            position: fixed;
+            font-size: 1.2rem;
+            color: rgba(245, 160, 200, 0.15);
+            pointer-events: none;
+            animation: floatHeart linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes floatHeart {
+            0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) scale(1) rotate(720deg); opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            .story-container { padding: 2rem 1.4rem 2rem; }
+            .title-section h1 { font-size: 2.8rem; }
+            .name-stanza .first-name { font-size: 2.6rem; }
+            .heart-glow { font-size: 2.4rem; }
+            .declaration-box .declaration-text { font-size: 1rem; }
+            .declaration-box .declaration-text .highlight { font-size: 1.2rem; }
+            .declaration-box .big-line { font-size: 1.4rem; }
+            .names-verse { gap: 1.2rem; }
+            .declaration-box { padding: 1.8rem 1.4rem; }
+            .romantic-footer { gap: 0.8rem; }
+        }
+
+        @media (max-width: 420px) {
+            .name-stanza .first-name { font-size: 2.2rem; }
+            .title-section h1 { font-size: 2.4rem; }
+            .declaration-box { padding: 1.5rem 1.2rem; }
+            .declaration-box .declaration-text { font-size: 0.9rem; }
+            .declaration-box .declaration-text .highlight { font-size: 1rem; }
+            .declaration-box .big-line { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div id="hearts"></div>
+
+    <div class="story-container">
+        <div class="star-divider">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+
+        <div class="title-section">
+            <h1>✦ A Love Story ✦</h1>
+            <div class="sub"><i class="fas fa-feather" style="margin-right: 8px;"></i> where two souls become one <i class="fas fa-feather" style="margin-left: 8px;"></i></div>
+        </div>
+
+        <div class="names-verse">
+            <div class="name-stanza">
+                <div class="first-name">Seid</div>
+                <div class="last-name">Adem</div>
+            </div>
+            <div class="heart-glow">
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class="name-stanza">
+                <div class="first-name">Nadiya</div>
+                <div class="last-name">Kasim</div>
+            </div>
+        </div>
+
+        <div class="declaration-box">
+            <div class="declaration-text">
+                <span class="highlight">Seid</span> &amp; <span class="highlight">Nadiya</span>
+                <span class="divider-line">· · ·</span>
+                On a beautiful <span style="color: #f0c8e0; font-family: 'Playfair Display', serif; font-weight: 700;">Wednesday</span> evening,<br />
+                as the world grew quiet and the stars began to shine,<br />
+                at <span style="color: #f0c8e0; font-family: 'Playfair Display', serif; font-weight: 700;">9:20 PM</span>,<br />
+                something magical happened.<br /><br />
+                Two hearts, once separate,<br />
+                found their way to <span style="color: #f0c8e0; font-family: 'Playfair Display', serif; font-weight: 700;">each other</span>.<br />
+                Two souls, once searching,<br />
+                discovered their <span style="color: #f0c8e0; font-family: 'Playfair Display', serif; font-weight: 700;">home</span>.<br />
+                <span class="divider-line">· · ·</span>
+                <span style="color: #ffd6ea; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.6rem; text-shadow: 0 0 30px #f58ab0;">
+                    Two hearts became one.
+                </span><br />
+                <span class="divider-line">· · ·</span>
+                <span class="big-line">And their journey began.</span>
+            </div>
+        </div>
+
+        <div class="date-display">
+            <i class="fas fa-calendar-alt"></i>
+            July 2, 2026
+            <i class="fas fa-calendar-alt"></i>
+        </div>
+
+        <div class="romantic-footer">
+            <i class="fas fa-feather" style="color: #b396c5; opacity:0.3;"></i>
+            <span class="seal">
+                <i class="fas fa-heart" style="font-size:0.7rem;"></i>
+                Seid & Nadiya
+                <i class="fas fa-heart" style="font-size:0.7rem;"></i>
+            </span>
+            <i class="fas fa-feather" style="color: #b396c5; opacity:0.3;"></i>
+            <span class="pill-button"><i class="far fa-clock"></i> 9:20 PM</span>
+        </div>
+    </div>
+
+    <script>
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 6 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+            particle.style.animationDelay = (Math.random() * 10) + 's';
+            particle.style.opacity = Math.random() * 0.3 + 0.1;
+            particlesContainer.appendChild(particle);
+        }
+
+        const heartsContainer = document.getElementById('hearts');
+        const heartSymbols = ['♥', '♡'];
+        for (let i = 0; i < 15; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.fontSize = (Math.random() * 1.5 + 0.8) + 'rem';
+            heart.style.animationDuration = (Math.random() * 20 + 15) + 's';
+            heart.style.animationDelay = (Math.random() * 15) + 's';
+            heartsContainer.appendChild(heart);
+        }
+    </script>
+</body>
+</html>
